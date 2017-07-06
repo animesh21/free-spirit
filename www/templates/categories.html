@@ -1,0 +1,54 @@
+<ion-view view-title="Categories">
+	<ion-pane>
+		<ion-tabs class="tabs-energized">
+			<ion-tab title="Following">
+				<ion-pane>
+					<ion-content class="has-header">
+						<ion-list>
+							<div class="row row-wrap row-no-padding category-items">
+								<ion-item class="col col-50" data-ng-repeat="category in categoriesCtrl.categories | orderBy:'id' track by $index" data-ui-sref="app.category({categoryId: category.id})">
+									<div class="item-image">
+										<img data-ng-src="{{category.img}}" alt="{{category.title}}" />
+										<h3>{{category.title}}</h3>
+									</div>
+								</ion-item>
+							</div>
+						</ion-list>
+					</ion-content>
+				</ion-pane>
+			</ion-tab>
+			<ion-tab title="Popular">
+				<ion-pane>
+					<ion-content class="has-header">
+						<ion-list>
+							<div class="row row-wrap row-no-padding category-items">
+								<ion-item class="col col-50" data-ng-repeat="category in categoriesCtrl.categories | orderBy:'title' track by $index" data-ui-sref="app.category({categoryId: category.id})">
+									<div class="item-image">
+										<img data-ng-src="{{category.img}}" alt="{{category.title}}" />
+										<h3>{{category.title}}</h3>
+									</div>
+								</ion-item>
+							</div>
+						</ion-list>
+					</ion-content>
+				</ion-pane>
+			</ion-tab>
+			<ion-tab title="Explore">
+				<ion-pane>
+					<ion-content class="has-header">
+						<ion-list>
+							<div class="row row-wrap row-no-padding category-items">
+								<ion-item class="col col-50" data-ng-repeat="category in categoriesCtrl.categories | orderBy:'-title' track by $index" data-ui-sref="app.category({categoryId: category.id})">
+									<div class="item-image">
+										<img data-ng-src="{{category.img}}" alt="{{category.title}}" />
+										<h3>{{category.title}}</h3>
+									</div>
+								</ion-item>
+							</div>
+						</ion-list>
+					</ion-content>
+				</ion-pane>
+			</ion-tab>
+		</ion-tabs>
+	</ion-pane>
+</ion-view>

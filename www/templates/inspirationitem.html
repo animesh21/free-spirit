@@ -1,0 +1,39 @@
+<style>
+    .button-bar > .button:first-child {
+        border-radius: 0px !important;
+        color:#fff !important
+    }
+    .button-bar > .button:last-child{
+        border-radius: 0px !important;
+        color:#fff !important
+    }
+    .button-bar > .button {
+        color:#fff !important
+    }
+</style>
+<ion-view view-title="Social Share">
+    <ion-pane>
+        <ion-content>
+            <ion-item class="ion-item">
+                <div class="item-image">
+                    <img data-ng-src="{{IMAGE}}">
+                    <h1>{{TITLE}}</h1>
+                </div>
+                <div class="item-content article-content">
+                    <div class="row item-tools">
+                        <div class="col col-50"><i class="icon ion-person"></i>By Author</div>
+                        <div class="col col-50"><i class="icon ion-clock"></i>{{DATE}}</div>
+                    </div>
+                    <div class="item item-text-wrap">
+                        {{CONTENT}}
+                    </div>
+                </div>
+<!--                <div class="button-bar" style="border-radius: 0px !important">
+                    <a class="button" ng-click="facebook()" style="background: #3b5998 !important"><i class="ion-social-facebook" style="font-size: 28px"></i></a>
+                    <a class="button" style="background: #0084b4 !important"><i class="ion-social-twitter" style="font-size: 28px"></i></a>
+                    <a class="button" style="background: #fb3958 !important"> <i class="ion-social-instagram" style="font-size: 28px"></i></a>
+                </div>-->
+            </ion-item>
+        </ion-content>
+    </ion-pane>
+</ion-view>

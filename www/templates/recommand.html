@@ -1,0 +1,172 @@
+<style>
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    .category-item-image img
+    {
+        height: 92px !important;
+        font-weight: bold !important;
+    }
+    .tab-item
+    {
+        font-size: 10px !important;
+    }
+   .tab-item.tab-item-active .tab-title, .tab-item.active .tab-title, .tab-item.activated .tab-title
+    {
+        font-size: 10px !important;
+        padding: 6px 4px !important;
+    }
+    .item-input-wrapper
+    {
+        color: #000 !important;
+        border-bottom: 2px solid #f8f8f8;
+        border-radius: 0px;
+        height: 44px !important;
+    }
+    .button
+    {
+        border-radius: 0px;
+        height: 45px !important;
+    }
+    .btn
+    {
+        border-radius: 20px;
+        height: 32px !important;
+        margin-left: 218px;
+        width:80px
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+        color:#000 !important;
+        border-radius: 0px !important;
+    }
+    .chatbutton
+    {
+        width: 96% !important;
+    }
+</style>
+<ion-view view-title="Discussions">
+    <ion-pane>
+        <ion-tabs class="tabs-energized">
+            <ion-tab title="Questions">
+                <ion-pane>
+                    <ion-content class="has-header" scroll="false">
+                        <ion-list>
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" placeholder="Search Question's here..." ng-model="searchquestion">
+                                </label>
+                                <button class="button button-small padding">
+                                    <i class="ion-search" style="font-size:22px"></i>
+                                </button>
+                            </div>
+                        </ion-list>
+                        <ion-scroll direction="y" style="height: 500px">
+                        <form  name="quesForm" novalidate ng-submit="submitQuestion(quesForm, data)">
+                            <label class="item item-input item-stacked-label">
+                                <div class="assertive" ng-if="quesForm.$submitted" ng-show="quesForm.question.$error.required">!This Field is required</div>
+                                <input type="text" name="question" class="border" ng-model="data.question" placeholder="Enter Questions...." required>
+                                <button class="chatbutton button button-stable button-full padding" type="submit"><i class="ion-ios-plus-outline"></i>&nbsp;Add</button>
+                            </label>
+                        </form>
+                        <ion-list class="list">
+                            <ion-item class="category-ion-item" ng-repeat="y in quesdata| filter:searchquestion">
+                                <div class="row row-wrap category-items padding item-text-wrap" style="font-size:14px">
+                                    {{$index + 1}}) {{y.title}}&nbsp;<a class="btn button button-small button-royal" ng-click="quesAns({{y.id}})">View</a>
+                                    <span><small><strong>&nbsp;By {{y.name}}</strong></small></span><span style="margin-left:155px;"><small><strong>&nbsp;{{y.date}}</strong></small></span>
+                                </div>
+
+                            </ion-item>
+                        </ion-list>
+                        </ion-scroll>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="Recommendations" on-select="getDiscusstion()">
+                <ion-pane>
+                    <ion-content class="has-header" scroll="false">
+                        <ion-list>
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" placeholder="Search Recommendat......" ng-model="searchquestion">
+                                </label>
+                                <button class="button button-small padding">
+                                    <i class="ion-search" style="font-size:22px"></i>
+                                </button>
+                            </div>
+                        </ion-list>
+                        <ion-scroll direction="y" style="height: 500px">
+                        <form  name="recForm" novalidate ng-submit="submitRecommand(recForm, data)">
+                            <label class="item item-input item-stacked-label">
+                                <div class="assertive" ng-if="recForm.$submitted" ng-show="recForm.recommand.$error.required">!This Field is required</div>
+                                <input type="text" name="recommand" class="border" ng-model="data.recommand" placeholder="Enter Recommendations...." required>
+                                <button class="chatbutton button button-stable button-full padding" type="submit"><i class="ion-ios-plus-outline"></i>&nbsp;Add</button>
+                            </label>
+                        </form>
+                        <ion-list class="list">
+                            <ion-item class="category-ion-item" ng-repeat="y in quesdata| filter:searchquestion">
+                                <div class="row row-wrap category-items padding item-text-wrap" style="font-size:14px">
+                                    {{$index + 1}}) {{y.title}}&nbsp;<a class="btn button button-small button-balanced" ng-click="recommandAns({{y.id}})">View</a>
+                                    <span><small><strong>&nbsp;By {{y.name}}</strong></small></span><span style="margin-left:155px;"><small><strong>&nbsp;{{y.date}}</strong></small></span>
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                        </ion-scroll>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="Ask The Expert" on-select="getUserDetails()">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list>
+                            <ion-item class="category-ion-item">
+                                <div class="row row-wrap padding item item-text-wrap" style="color: #136B7C; font-size:12px; text-align: justify; background: rgba(221, 221, 221, 0.78)"><strong>
+                                    Feeling stuck? Have questions about how to get started with your Bucket List? Life is short! Don't waste another minute! Set up a complementary call with a Free Spirit coach who will help you let go of what is stopping you from living the life of your dreams! (Available for Premium members only - limit one free call per user.)</strong>
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item">
+                                <div class="item item-text-wrap" style="color: #136B7C; font-size:14px; text-align: justify; background:#fff">&nbsp;
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item">
+                                <div class="row row-wrap padding item item-text-wrap" style="color: #136B7C; font-size:12px; text-align: justify; background: rgba(221, 221, 221, 0.78)"><strong>First, in order so that we can help you in the best way possible, click on this link and fill out the questionnaire. We want to maximize our time with you so the more information you provide, the better we will be able to help you.</strong> 
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                        <ion-list>
+                            <form name="askAnExpert" novalidate ng-submit="send(askAnExpert, userdata)">
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Name</span>
+                                    <input class="border" type="text" placeholder="Name.." name="name" ng-model="userdata.name" ng-value="{{userdata.name}}">
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Email</span>
+                                    <input class="border" type="text" placeholder="Email.." name="email" ng-model="userdata.email" ng-value="{{userdata.email}}">
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Phone</span>
+                                    <input class="border" type="text" placeholder="Phone.." name="phone" ng-model="userdata.phone" required>
+                                    <span class="assertive" ng-if="askAnExpert.$submitted" ng-show="askAnExpert.phone.$error.required">* This filed is required !</span>
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">What do you need help on ?</span>
+                                    <input class="border" type="text" placeholder="What do you need help on ?" name="message" ng-model="userdata.message" required>
+                                    <span class="assertive" ng-if="askAnExpert.$submitted" ng-show="askAnExpert.message.$error.required">* This filed is required !</span>
+                                </label>
+                                <div class="item item-text-wrap">
+                                    <button class="button button-positive button-full" type="submit"><i class="ion-ios-paperplane-outline" style="font-size: 22px;"></i>&nbsp;Send</button>
+                                </div>
+                            </form>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+        </ion-tabs>
+    </ion-pane>
+</ion-view>

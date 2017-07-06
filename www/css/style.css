@@ -1,0 +1,77 @@
+/* Empty. Add your own CSS if you like */
+.bar.bar-stable .title, .bar-stable .button.button-clear
+{
+    color:#000 !important;
+}
+
+.tabs-energized > .tabs, .tabs.tabs-energized
+{
+    background: #136B7C !important;
+}
+.button-positive, .button-light
+{
+    background: #136B7C !important;
+}
+
+.full-page-bckg-menu
+{
+    background-image: linear-gradient(to bottom, #f3f3f2 0%, #000 100%) !important;
+}
+.custom-card
+{
+    border-radius: 0px !important;
+}
+
+
+
+.item-input-wrapper
+{
+    color: #000 !important;
+    border-bottom: 1px solid #ddd;
+    border-top: 1px solid #ddd;
+    border-radius: 0px;
+    height: 44px !important;
+    background: none !important;
+}
+
+
+.full-page-bckg:after {
+    content: "";
+    background: #fff !important;
+    background-size: cover;
+    opacity: 0.3;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1; }
+
+
+.menu.full-page-bckg-menu:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: #fff !important;
+    background-size: cover;
+    opacity: 0.3;
+    -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px); }
+
+.full-page-bckg
+{
+    background: #fff !important;
+}
+.invision-form .list-inset .item-input
+{
+    background: #ddd !important;
+}
+
+/*Ion Scroll CSS*/
+

@@ -1,0 +1,387 @@
+<style>
+    input[type="text"] {
+        color: #136B7C !important;
+    }
+
+    input[type="email"] {
+        color: #136B7C !important;
+    }
+
+    input[type="password"] {
+        color: #136B7C !important;
+    }
+
+    .placeholder-icon {
+        color: #136B7C !important;
+    }
+
+    .form-links {
+        color: #136B7C !important;
+    }
+
+    a {
+        color: #136B7C !important;
+        font-weight: bold;
+    }
+
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #136B7C !important;
+    }
+
+    .item.logo-big h1 {
+        margin: 51px 0 40px !important;
+    }
+
+    .item-radio .item-content {
+        background: none;
+        color: #136B7C;
+    }
+
+    .list .item-radio .radio-icon {
+        background: none;
+        color: #136B7C;
+        float: right;
+        position: absolute;
+        left: 220px;
+        z-index: 1000;
+        top: 7px;
+    }
+
+    .item-radio input:checked + .radio-content .item-content {
+        /* style the item content when its checked */
+        background: none;
+        width: 250px;
+    }
+
+    .text {
+        width: 112px !important;
+        position: relative !important;
+    }
+
+    .item {
+        color: #136B7C !important;
+    }
+</style>
+<ion-view view-title="Register" hide-nav-bar="true" class="full-page-bckg">
+    <ion-content has-bouncing="false">
+        <form name="signupForm" novalidate class="invision-form" ng-submit="signup(signupForm, data)">
+            <!--            Step 1 Starts Here....-->
+            <div id="Step1" ng-show="show == 1">
+                <div class="list list-inset">
+                    <div class="item logo-big">
+                        <h1 style="color:#136B7C !important">Sign Up</h1>
+                    </div>
+                    <label class="item item-input">
+                        <i class="icon ion-person placeholder-icon"></i>
+                        <input type="text" placeholder="Name" ng-model="data.name" name="name">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-email placeholder-icon"></i>
+                        <input type="text" placeholder="Email" ng-model="data.email" name="email">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-lock-combination placeholder-icon"></i>
+                        <input type="password" placeholder="Password" ng-model="data.password" name="password">
+                    </label>
+                    <label class="item item-input">
+                        <i class="icon ion-calendar placeholder-icon"></i>
+                        <input placeholder="Birthday" type="text" onfocus="(this.type = 'date')"
+                               ng-model="data.birthday">
+                    </label>
+                    <label class="item form-button">
+                        <button class="button button-block button-light" type="button" ng-click="showing(2)">Next
+                        </button>
+                    </label>
+                    <div class="row form-links">
+                        <div class="col center-align">
+                            <small>Already registered ?</small>
+                            <a data-ui-sref="login">Login Here </a></div>
+                    </div>
+                </div>
+            </div>
+            <!--            Step  Ends Here...-->
+            <!--            Step 2 Starts Here....-->
+            <div id="Step2" ng-show="show == 2">
+                <div class="list list-inset">
+                    <div class="item logo-big">
+                        <h1 style="color:#136B7C !important">Choose Your Bucket List</h1>
+                    </div>
+                    <label class="list item item-input">
+                        <ion-radio ng-model="data.choice" ng-value="1" ng-click="setPaln(data.choice)">
+                            <ul class="list">
+                                <li class="item item-text-wrap"><strong>BASIC: Free!</strong></li>
+                                <li class="item item-text-wrap">Includes:</li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Create
+                                    your own profile
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Create a
+                                    Bucket List
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Follow
+                                    friends and free spirits around the world
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Daily Free
+                                    Spirit Inspirations
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Hundreds
+                                    of Bucket List ideas
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Access to
+                                    The UBL Store
+                                </li>
+                            </ul>
+                        </ion-radio>
+                    </label>
+                    <label class="item item-input">
+                        <ion-radio ng-model="data.choice" ng-value="2" ng-click="setPaln(data.choice)">
+                            <ul class="list">
+                                <li class="item item-text-wrap"><strong>PRO:
+                                    <small>$3.99 a month or $39.99 for one year</small>
+                                </strong></li>
+                                <li class="item item-text-wrap">Includes:</li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Everything
+                                    in the BASIC plan
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Create
+                                    your own to-do lists
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Free
+                                    Spirit discussion page/private Facebook group
+                                </li>
+                                <!--                                <li class="item item-text-wrap"><i class="ion-record" style="font-size:8px !important"></i>&nbsp;Access to the certain discounts</li>-->
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Ad Free !
+                                </li>
+                            </ul>
+                        </ion-radio>
+                    </label>
+                    <label class="item item-input">
+                        <ion-radio ng-model="data.choice" ng-value="3" ng-click="setPaln(data.choice)">
+                            <ul class="list">
+                                <li class="item item-text-wrap"><strong>PREMIUM:
+                                    <small>$9.99 a month or $97 for one year</small>
+                                </strong></li>
+                                <li class="item item-text-wrap">Includes:</li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Everything
+                                    in the BASIC plan and PRO plans
+                                </li>
+                                <!--                                <li class="item item-text-wrap"><i class="ion-record" style="font-size:8px !important"></i>&nbsp;Access to more discounts</li>-->
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;Access to
+                                    online content to help achieve your dreams
+                                </li>
+                                <li class="item item-text-wrap"><i class="ion-record"
+                                                                   style="font-size:8px !important"></i>&nbsp;BONUS Ask
+                                    the Expert feature- $250 value !
+                                </li>
+                            </ul>
+                        </ion-radio>
+                    </label>
+
+                    <label class="item form-button">
+                        <button class="button button-block button-light" ng-disabled="!data.choice" type="button"
+                                ng-click="showing(3)">Next
+                        </button>
+                    </label>
+                    <div class="row form-links">
+                        <div class="col center-align">
+                            <small>Already registered ?</small>
+                            <a data-ui-sref="login">Login Here </a></div>
+                    </div>
+                </div>
+            </div>
+            <!--            Step  Ends Here...-->
+            <!--            Step 3 Starts Here....-->
+            <div id="Step3" ng-show="show == 3">
+                <div class="list list-inset" ng-show="display == 4">
+                    <div class="item logo-big">
+                        <h1 style="color:#136B7C !important">Basic: Free!</h1>
+                    </div>
+                    <ul class="list">
+                        <li class="item item-text-wrap">This plan is free! To help keep this plan free you will see ads
+                            spread throughout the app. Use them to your advantage and find new cool things!
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>What will I get
+                            ?</strong></h2></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Create your own personalized profile
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Create your bucket list
+                        </li>
+                        <li class="item item-text-wrap"> --Add a pictures to your goals</li>
+                        <li class="item item-text-wrap"> --Add a goal date to get you moving</li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Follow your friends and Free Spirits
+                            around the world and see their Bucket Lists
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Get daily Free Spirit Inspirations to
+                            help you accomplish your Bucket List
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;100 Bucket List ideas to help you find
+                            your dreams
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Access to The UBL Store to help you
+                            accomplish your goals faster
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>Is this plan for
+                            you ?</strong></h2></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>Click Submit to get
+                            started !</strong></h2></li>
+                    </ul>
+                    <label class="item form-button">
+                        <button class="button button-block button-light" type="submit">Submit</button>
+                    </label>
+                    <div class="row form-links">
+                        <div class="col center-align">
+                            <small>Already registered ?</small>
+                            <a data-ui-sref="login">Login Here </a></div>
+                    </div>
+                </div>
+                <div class="list list-inset" ng-show="display == 5">
+                    <div class="item logo-big">
+                        <h1 style="color:#136B7C !important">PRO:$3.99 a month or $39.99 for one year</h1>
+                    </div>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>What will I get
+                            ?</strong></h2></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Ad Free !
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Create your bucket list
+                        </li>
+                        <li class="item item-text-wrap"><strong>--</strong>Make a to-do list and add a budget to make
+                            completing your goal easier
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Follow your friends and Free Spirits
+                            around the world
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Get daily Free Spirit Inspirations to
+                            help you accomplish your Bucket List
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;200 Bucket List ideas with pre-made
+                            to-do lists to help you find your dreams
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Free Spirit Discussion Page: ask
+                            questions and motivate other Free Spirits
+                        </li>
+                        <!--                        <li class="item item-text-wrap"><small><i class="ion-ios-medical"></i></small>&nbsp;Access to discounts to help you complete the goals</li>-->
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Access to a private Facebook group
+                            reserved only for Pro/Premium members !
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>Is this plan for
+                            you ?</strong></h2></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>Click Submit to get
+                            started !</strong></h2></li>
+                    </ul>
+                    <label class="item form-button">
+                        <button class="button button-block button-light" type="submit">Submit</button>
+                    </label>
+                    <div class="row form-links">
+                        <div class="col center-align">
+                            <small>Already registered ?</small>
+                            <a data-ui-sref="login">Login Here </a></div>
+                    </div>
+                </div>
+                <div class="list list-inset" ng-show="display == 6">
+                    <div class="item logo-big">
+                        <h1 style="color:#136B7C !important">PREMIUM:$9.99 a month or $97 for one year</h1>
+                    </div>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>What will I get
+                            ?</strong></h2></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Ad Free!
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Create your bucket list and a to-do list
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Access to online content on how to start
+                            and finish your bucket list
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Follow your friends and Free Spirits
+                            around the world
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Get daily Free Spirit Inspirations
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;300 Bucket List ideas to help you find
+                            your dreams + 20 new ideas each month!
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Free Spirit Discussion page: ask
+                            questions and motivate other Free Spirits
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Access to The UBL Store to help you
+                            accomplish your goal faster!
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;Access to a private Facebook Group
+                            reserved only for Premium members
+                        </li>
+                        <li class="item item-text-wrap">
+                            <small><i class="ion-ios-medical"></i></small>&nbsp;*BONUS: Ask the Expert: 1 complimentary
+                            call plus discounts to further calls/programs
+                        </li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>Is this plan for
+                            you?</strong></h2></li>
+                    </ul>
+                    <ul class="list">
+                        <li class="item item-text-wrap"><h2 style="color:#136B7C !important"><strong>Click Submit to get
+                            started !</strong></h2></li>
+                    </ul>
+                    <label class="item form-button">
+                        <button class="button button-block button-light" type="submit">Submit</button>
+                    </label>
+                    <div class="row form-links">
+                        <div class="col center-align">
+                            <small>Already registered ?</small>
+                            <a data-ui-sref="login">Login Here </a></div>
+                    </div>
+                </div>
+            </div>
+            <!--            Step  Ends Here...-->
+        </form>
+    </ion-content>
+</ion-view>

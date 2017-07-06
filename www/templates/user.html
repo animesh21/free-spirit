@@ -1,0 +1,109 @@
+<style>
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    input[type="password"]
+    {
+        color:#000 !important;
+    }
+    .item-select select
+    {
+        max-width: 100% !important;
+    }
+    .profile-item {
+        text-align: center;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    .profile-picture {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        /*        border-radius: 50%;*/
+        padding: 3px;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+        /*        border-radius: 50%;*/
+    }
+
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    .upload
+    {
+        width: 50% !important;
+        margin-left:66px !important;
+    }
+</style>
+<ion-view view-title="My Profile">
+    <ion-content>
+        <div class="content padding">
+            <form name="userUpdate" novalidate>
+                <div class="list list-inset">
+                    <ion-item class="profile-item" ng-click="takepic()">
+                        <div class="profile-picture big-profile-picture">
+                            <img src="{{editimage}}" alt="User Image">
+                        </div>
+                    </ion-item>
+                    <!--            <div class="item item-input item-stacked-label">
+                                    <button class="button button-positive button-full upload" ng-click="takepic()"><small>Camera / Media</small></button>
+                                </div>-->
+                    <!--            <label class="item item-input item-stacked-label">
+                                    <input type="file" name="image">
+                                    <br>
+                                </label>-->
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Name</span>
+                        <input class="border" type="text" placeholder="Name.." name="name" ng-model="user.name" ng-value="user.name">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Email</span>
+                        <input class="border" name="email" type="text" placeholder="Email.." ng-model="user.email" ng-value="{{user.email}}">
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Bio</span>
+                        <input class="border" name="bio" type="text" placeholder="Bio" ng-model="user.bio" ng-value="{{user.bio}}">
+                        <!--                <textarea class="border" placeholder="Bio.." ng-model="user.bio">{{user.bio}}</textarea>-->
+                        <input type="hidden" name="id" ng-model="user.id" ng-value="{{user.id}}" />
+                    </label>
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Old Password</span>
+                        <br>
+                        <input class="border" type="password" placeholder="Old Password" ng-model="oldpassword" name="oldpassword" ng-change="checkoldpassword(oldpassword)">
+                    </label>
+                    <label class="item item-input item-stacked-label" ng-show="input">
+                        <span class="input-label">New Password</span>
+                        <!--                <br>
+                                        <input class="border" type="text" placeholder="Old Password">-->
+                        <br>
+                        <input class="border" type="password" placeholder="New Password" ng-model="user.password" name="password"  />
+                        <!--                <br>
+                                        <input class="border" type="text" placeholder="Confrim Password">-->
+                    </label>
+                </div>
+                <div class="item item-text-wrap">
+                    <button class="button button-positive button-full" ng-click="updateProfile(userUpdate, user)">UPDATE</button>
+                    <a href="#" class="button button-positive button-full" data-ui-sref="app.follow" style="text-decoration:none !important; font-size: 16px">FOLLOWING / FOLLOWERS</a>
+                </div>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

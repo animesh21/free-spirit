@@ -1,0 +1,29 @@
+<ion-view view-title="Register" hide-nav-bar="true" class="full-page-bckg">
+    <ion-content has-bouncing="false">
+        <form ng-submit="loginCtrl.doLogin()" class="invision-form">
+            <div class="list list-inset">
+                <div class="item logo-big">
+                    <h1>Create Account</h1>
+                </div>
+                <label class="item item-input">
+                    <i class="icon ion-person placeholder-icon"></i>
+                    <input type="text" placeholder="Name">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-email placeholder-icon"></i>
+                    <input type="email" placeholder="Email">
+                </label>
+                <label class="item item-input">
+                    <i class="icon ion-lock-combination placeholder-icon"></i>
+                    <input type="password" placeholder="Password">
+                </label>
+                <label class="item form-button">
+                    <button class="button button-block button-light" type="submit">Continue</button>
+                </label>
+                <div class="row form-links">
+                    <div class="col center-align"><a data-ui-sref="app.terms">Terms & Conditions</a></div>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

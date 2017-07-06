@@ -1,0 +1,68 @@
+<style>
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+        color:#000 !important;
+        border-radius: 0px !important;
+    }
+    .chatbutton
+    {
+        width: 96% !important;
+    }
+    .item-input-wrapper
+    {
+        color: #000 !important;
+        border-bottom: 2px solid #f8f8f8;
+        border-radius: 0px;
+        height: 44px !important;
+    }
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    .button
+    {
+        border-radius: 0px;
+        height: 45px !important;
+    }
+</style>
+<ion-view view-title="Comments">
+    <ion-content class="has-header" scroll="false">
+        <ion-list>
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" placeholder="Search Comments here..." ng-model="searchComment" name="searchBucket">
+                </label>
+                <button class="button button-small padding">
+                    <i class="ion-search" style="font-size:22px"></i>
+                </button>
+            </div>
+        </ion-list>
+        <ion-scroll direction="y" style="height: 500px">
+        <form  name="chatForm" novalidate ng-submit="submitComment(chatForm, data)">
+            <label class="item item-input item-stacked-label">
+                <div class="assertive" ng-if="chatForm.$submitted" ng-show="chatForm.chat.$error.required">!This Field is required</div>
+                <input type="text" name="chat" class="border" ng-model="data.chat" placeholder="Enter Comments...." required>
+                <button class="chatbutton button button-stable button-full" type="submit"><i class="ion-ios-chatbubble"></i>&nbsp;Add Comments...</button>
+            </label>
+        </form>
+        <ion-list>
+            <!--							<ion-item class="user-info" ng-repeat="comment in commentsCtrl.comments | orderBy:'time' track by $index">-->
+            <ion-item class="user-info" ng-repeat="y in comments| filter: searchComment" id="text">
+                <img class="user-avatar" src="{{y.link}}" height="50px" width="100px" />
+                <div class="user-comment">
+                    <h4>{{y.author}}</h4>
+                    <p>{{y.content}} <span class="positive" style="float:right"></span><br><strong><small>{{y.date}}</small></strong>&nbsp;<span ng-show="{{y.status}}"><a ng-click="removeComment({{y.ID}})">Remove</a></span></p>
+                </div>
+            </ion-item>
+            <ion-item class="user-info" ng-if="!comments.length">
+                <div class="item itex-text-wrap">No Comments Available</div>     
+            </ion-item>
+        </ion-list>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

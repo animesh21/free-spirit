@@ -1,0 +1,16 @@
+<ion-view view-title="The UBL Links">
+    <ion-content class="has-header">
+        <ion-list class="list">
+            <ion-item class="category-ion-item" ng-repeat="y in UBl_DATA">
+                <div class="row row-wrap category-items padding" style="font-size:14px" >
+                    <a href="#" ng-click="browser('{{y.post_title}}')"><i class="ion-link" style="font-size:22px"></i>&nbsp;{{y.post_title}}</a>
+                </div>
+            </ion-item>
+<!--            <ion-item class="category-ion-item" ng-show="!y.length">
+                <div class="row row-wrap category-items padding" style="font-size:14px">
+                    No Data available in this category
+                </div>
+            </ion-item>-->
+        </ion-list>
+    </ion-content>
+</ion-view>

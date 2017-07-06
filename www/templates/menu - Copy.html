@@ -1,0 +1,63 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-positive">
+			<ion-nav-back-button></ion-nav-back-button>
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left" data-ng-if="appCtrl.showMenu"></button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="left" class="full-page-bckg-menu">
+		<ion-content>
+			<ion-list>
+				<ion-item menu-close data-ui-sref="app.categories">
+					<i class="icon ion-ios-paper-outline placeholder-icon"></i>
+					Categories
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.category({categoryId: 6})">
+					<i class="icon ion-ios-paper-outline placeholder-icon"></i>
+					Sample Category
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.category-featured({categoryId: 1})">
+					<i class="icon ion-ios-paper-outline placeholder-icon"></i>
+					Featured Category 
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.item({itemId: 2})">
+					<i class="icon ion-ios-copy-outline placeholder-icon"></i>
+					Item
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.comments">
+					<i class="icon ion-ios-chatbubble-outline placeholder-icon"></i>
+					Comments
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.login">
+					<i class="icon ion-ios-person-outline placeholder-icon"></i>
+					Login
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.register">
+					<i class="icon ion-ios-personadd-outline placeholder-icon"></i>
+					Register
+				</ion-item>
+				<ion-item menu-close data-ng-click="appCtrl.openModal()" class="item-complex">
+					<a class="item-content">
+						<i class="icon ion-ios-albums-outline placeholder-icon"></i>
+						Modal Window
+					</a>
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.terms">
+					<i class="icon ion-ios-list-outline placeholder-icon"></i>
+					Terms &amp; Conditions
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.help">
+					<i class="icon ion-ios-help-outline placeholder-icon"></i>
+					Help
+				</ion-item>
+				<ion-item menu-close data-ui-sref="app.slideshow({forceShow: true})">
+					<i class="icon ion-ios-barcode-outline placeholder-icon"></i>
+					Slideshow
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>

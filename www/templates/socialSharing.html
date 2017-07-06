@@ -1,0 +1,88 @@
+<ion-view view-title="Inspirations">
+    <ion-pane>
+        <ion-content class="has-header">
+            <ion-refresher on-refresh="doRefresh()">
+
+            </ion-refresher>
+            <ion-list>
+                <div class="category-items">
+<!--                    <ion-item ng-repeat="y in inpirationData" ng-click="getSingleItem({{y.id}})">
+                        <div class="item-image">
+                            <img class="user-avatar" src="{{y.image}}" alt="image" >
+                            <h3>{{y.title}}</h3>
+                        </div>
+                    </ion-item>-->
+                    <ion-item class="ion-item" ng-repeat="y in inpirationData" ng-click="getSingleItem({{y.id}})">
+                        <div class="item-image">
+                            <img data-ng-src="{{y.image}}">
+<!--                            <h1>{{y.title}}</h1>-->
+                        </div>
+                        <div class="item-content article-content">
+                            <div class="row item-tools">
+                                <div class="col col-50">{{y.title}}</div>
+                            </div>
+                            <div class="item item-text-wrap">
+                               
+                            </div>
+                        </div>
+                    </ion-item>
+                </div>
+            </ion-list>
+        </ion-content>
+    </ion-pane>
+    <!--    <ion-content>
+            <ion-refresher on-refresh="doRefresh()">
+    
+            </ion-refresher>
+            <div class="row row-wrap">
+                <div class="col col-50 padding" ng-repeat="y in inpirationData">
+                    <img class="user-avatar" src="{{y.image}}" alt="image" width="100%" ng-click="getSingleItem({{y.id}})">
+                </div>
+            </div>
+            <ion-list>
+                                                            <div class="row row-wrap row-no-padding category-items">
+                                                                    <ion-item class="col col-50" >
+                                                                            <div class="item-image" ng-repeat="y in inpirationData">
+                                                                                    <img class="user-avatar" src="{{y.image}}" alt="image" ng-click="getSingleItem({{y.id}})">
+                                                                                    <h3>{{y.title}}</h3>
+                                                                            </div>
+                                                                    </ion-item>
+                                                            </div>
+                                                    </ion-list>
+                    <div class="list list-inset">
+                        <div class="item item-input item-stacked-label">
+                            <button class="button button-clear" onclick="window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">
+                                 ng-click="shareByWhatsApp('hii',image,'www.google.com')" 
+                                <i class="icon ion-social-whatsapp"></i> Whatsapp
+                            </button>
+                        </div>
+                        <div class="item item-input item-stacked-label">
+                            <button onclick="window.plugins.socialsharing.shareViaFacebook('Message via Facebook', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})"
+                                    class="button button-clear">
+                                <i class="icon ion-social-facebook"></i> Facebook
+                            </button>
+                        </div>
+                        <div class="item item-input item-stacked-label">
+                            <button onclick="window.plugins.socialsharing.shareViaTwitter('Message via Twitter', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})"
+                                    class="button button-clear">
+                                <i class="icon ion-social-twitter"></i> Twitter
+                            </button>
+                        </div>
+                                <div class="item item-text-wrap row">
+                                    <button ng-click="share('sms', 'myMessage', '', 'http://technotip.com');"
+                                                 class="button button-clear col col-20">
+                                        <i class="icon ion-android-textsms"></i>
+                                    </button>
+                                </div>
+                                <div class="item item-text-wrap row">
+                                    <button ng-click="share('email', 'myMessage', '', 'http://technotip.com');"
+                                                 class="button button-clear col col-20">
+                                        <i class="icon ion-ios-email"></i>
+                                    </button>
+                                </div>
+                    </div>
+               <button class="button button-clear " onclick="window.plugins.socialsharing.shareViaWhatsApp('Message via WhatsApp', null /* img */, null /* url */, function() {console.log('share ok')}, function(errormsg){alert(errormsg)})">msg via WhatsApp (with errcallback)</button>
+    
+    
+        </ion-content>-->
+</ion-view>

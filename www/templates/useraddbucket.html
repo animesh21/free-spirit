@@ -1,0 +1,138 @@
+<style>
+    .item-select select 
+    {
+        padding: 0 15px 0 0 !important;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    input[type="date"]
+    {
+        color:#000 !important;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    .profile-item {
+        text-align: center;
+    }
+
+    .profile-picture {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        padding: 3px;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    .upload
+    {
+        width: 50% !important;
+        margin-left:66px !important;
+    }
+    .category-item-image img
+    {
+        height: 92px !important;;
+    }
+</style>
+<ion-view view-title="Bucket List">
+    <ion-content>
+        <div class="list list-inset">
+            <form name="userAddBucketForm" novalidate id="userAddBucketForm" ng-submit="saveTodoList(userAddBucketForm)">
+                <ion-item class="profile-item" ng-click="takepic()">
+                    <div class="profile-picture big-profile-picture">
+                        <img src="{{editimage}}" alt="{{editimage}}">
+                    </div>
+                </ion-item>
+                <label class="item item-input item-select">
+                    <span class="input-label">Category</span>
+                    <div data-tap-disabled="true">
+                        <select ng-options="item as item.label for item in items track by item.id" ng-model="value.selected"></select>
+                    </div>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Goal Name</span>
+                    <input type="text" class="border" placeholder="Goal Name.." name="gname" ng-model="value.title" ng-value="value.title" required>
+                </label>
+                <label class="item item-input item-stacked-label">
+                    <span class="input-label">Goal Date</span>
+                    <span class="assertive" ng-if="userAddBucketForm.$submitted" ng-show="userAddBucketForm.gdate.$error.required"><small>* required !</small></span>
+                    <!--                                    <input type="text" onfocus="(this.type = 'date')" class="border" placeholder="Goal Date.." name="gdate" ng-model="data.gdate" required ng-click="datepicker()">-->
+                    <input type="text" onfocus="(this.type = 'date')" class="border" placeholder="Goal Date.." name="gdate" ng-model="value.gdate" required>
+                </label>
+                <label class="item item-input item-select">
+                    <span class="input-label">Private / Public</span>
+                    <span class="assertive" ng-if="userAddBucketForm.$submitted" ng-show="userAddBucketForm.gpubprivat.$error.required"><small>* required !</small></span>
+                    <div data-tap-disabled="true">
+                        <select name="gpubprivat" ng-model="value.gpubprivat" required>
+                            <option value="">Select</option>
+                            <option value="Public">Private</option>
+                            <option value="Private">Public</option>
+                        </select>
+                    </div>
+                </label>
+                <!--                                <label class="item item-input item-stacked-label">
+                                                    <span class="input-label">Public / Private</span>
+                                                    <ion-list>
+                                                        <ion-radio name="gpubprivat" ng-model="data.gpubprivat" ng-value="'Public'">Public</ion-radio>
+                                                        <ion-radio name="gpubprivat" ng-model="data.gpubprivat" ng-value="'Private'">Private</ion-radio>
+                                                    </ion-list>
+                                                </label>-->
+                
+                    <label class="item item-input item-stacked-label">
+                        <span class="input-label">Budget</span>
+                        <span class="assertive" ng-if="userAddBucketForm.$submitted" ng-show="userAddBucketForm.budget.$error.required"><small>* required !</small></span>
+                        <input type="text" class="border" placeholder="Budget.." name="budget" ng-model="value.budget" required>
+                    </label>
+                    <div class="item item-input item-stacked-label">
+                        <span class="input-label">To-Do List</span>
+                        <a style="float: right !important" ng-click="addFiled()">
+                            <small><strong>Add</strong></small>
+                        </a>
+                    </div>
+                    <div class="item item-input item-stacked-label">
+                        <div class="row" ng-repeat="y in data">
+                            <div class="item item-input">
+                                <input type="text" name="list[]" ng-model="y" placeholder="List Item" style="border: 1px solid #ddd">
+                            </div>
+                            <a ng-click="removeFiled()"><small><strong>Remove</strong></small></a>
+                        </div>
+                        <div class="row" ng-repeat="choice in choices">
+                            <div class="item item-input">
+                                <input type="text" name="list[]" ng-model="choice.list" placeholder="List Item" style="border: 1px solid #ddd">
+                            </div>
+                            <a ng-click="removeFiled1()"><small><strong>Remove</strong></small></a>
+                        </div>
+                    </div>
+                
+                <button class="button button-positive button-full" type="submit">ADD</button>
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

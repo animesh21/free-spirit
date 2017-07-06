@@ -1,0 +1,75 @@
+<style>
+    input[type="text"]
+    {
+        color:#136B7C !important;
+    }
+    input[type="email"]
+    {
+        color:#136B7C !important;
+    }
+    input[type="password"]
+    {
+        color:#136B7C !important;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #136B7C !important;
+    }
+    .button-primary
+{
+    background: #136B7C !important;
+}
+.placeholder-icon
+{
+    color: #136B7C !important;
+}
+.form-links
+{
+    color: #136B7C !important;
+}
+a{
+    color: #136B7C !important;
+    font-weight:bold;
+}
+.facebook
+{
+    background: #3b5998 !important;
+}
+</style>
+<ion-view view-title="Login" hide-nav-bar="true" class="full-page-bckg">
+    <ion-content has-bouncing="false">
+        <form name="loginForm"  class="invision-form" novalidate ng-submit="doLogin(loginForm, user)">
+            <h3 style="position:relative; text-align: center !important; margin-top: 40px; color:#136B7C">The Ultimate Bucket List</h3>
+            <div class="list list-inset">
+                <div class="item logo-big" style='margin-top: -50px !important'>
+                    <img src="img/logo.png" alt="logo" />
+                </div>
+                <p class="item" style="margin-bottom: 10px;padding-left: 25px; color:#136B7C" ng-if="loginForm.$submitted" ng-show="loginForm.email.$error.required">* Email is required !</p>
+                <p class="item" style="margin-bottom: 10px;padding-left: 25px; color:#136B7C" ng-if="loginForm.$submitted" ng-show="loginForm.email.$error.email">* Enter a valid email address !</p>
+                <label class="item item-input">
+                    <i class="icon ion-email placeholder-icon"></i>
+                    <input type="email" placeholder="Email" ng-model="user.email" name="email" required autocomplete="off">
+                </label>
+                <p class="item" style="margin-bottom: 10px;padding-left: 25px; color:#136B7C"  ng-if="loginForm.$submitted" ng-show="loginForm.password.$error.required">* Password filed is required !</p>
+                <label class="item item-input">
+                    <i class="icon ion-lock-combination placeholder-icon"></i>
+                    <input type="password" placeholder="Password" ng-model="user.password" name="password" required>
+                </label>
+                <label class="item form-button">
+                    <button class="button button-block button-primary button_lg" type="submit">Log in</button>
+                </label>
+                <div class="col" style="text-align:center"><a href="#">or</a></div>
+                <label class="item form-button">
+                    <button class="button button-block button-primary facebook" type="button" ng-click="facebookFun()"><i class="ion-social-facebook"></i>&nbsp;Login with Facebook</button>
+                </label>
+                <div class="row form-links" style="text-align: center !important">
+                    <div class="col"><small>New User</small> ? <a data-ui-sref="signup">Register Here</a></div>
+                    <!--					<div class="col right-align"><a data-ui-sref="app.help">Need Help?</a></div>-->
+                </div>
+                <div class="row form-links" style="text-align: center !important">
+                    <div class="col"><a data-ui-sref="signup">Forget Password</a></div>
+                    <!--					<div class="col right-align"><a data-ui-sref="app.help">Need Help?</a></div>-->
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

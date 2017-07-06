@@ -1,0 +1,170 @@
+<style>
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    input[type="date"]
+    {
+        color:#000 !important;
+    }
+    .upload
+    {
+        width: 50% !important;
+        margin-left:66px !important;
+    }
+    .item-select select
+    {
+        max-width: 100% !important;
+    }
+    .profile-item {
+        text-align: center;
+    }
+
+    .profile-picture {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        padding: 3px;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height:100px;
+    }
+
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+</style>
+<ion-view view-title="List Details">
+    <ion-content>
+        <!--        <h4 style="text-align:center !important">{{value.title}}</h4>-->
+        <!--        <form name="listUpdate" novalidate ng-submit="updateListData(value)">
+                    <div class="list list-inset">
+                                        <h4 style="text-align:center !important">{{title}}</h4>
+                        <ion-item class="profile-item">
+                            <div class="profile-picture big-profile-picture">
+                                                            <img src="http://placehold.it/550x550" ng-src="{{image}}">
+                                <img ng-src="{{editimage}}" id="myImage" />
+                            </div>
+                        </ion-item>
+                         <img ng-src="{{editimage}}" id="myImage" />
+                        <div class="item item-input item-stacked-label">
+                            <button class="button button-positive button-full upload" type="button" ng-click="takepic()"><small>Camera / Media</small></button>
+                        </div>
+                        <div class="item item-input item-stacked-label">
+                            <input type="hidden" class="border" name="postId" ng-model="value.postId" />
+                        </div>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Goal Name:-</span>
+                            <input type="text" class="border" placeholder="Goal Name...." ng-model="value.title" name="goalname" required>
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Goal Date:-</span>
+                            <input type="text" class="border" placeholder="Goal Date...." ng-model="value.date" name="goaldate" onfocus="(this.type = 'date')" required>
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Category</span>
+                            <span class="assertive" ng-if="goalForm.$submitted" ng-show="goalForm.category.$error.required">* This filed is required !</span>
+                            <ion-list>
+                                <ion-radio name="category" ng-model="value.category" ng-value="18">Health</ion-radio>
+                                <ion-radio name="category" ng-model="value.category" ng-value="19">Sports</ion-radio>
+                                <ion-radio name="category" ng-model="value.category" ng-value="20">Travel</ion-radio>
+                                <ion-radio name="category" ng-model="value.category" ng-value="21">Learn</ion-radio>
+                                <ion-radio name="category" ng-model="value.category" ng-value="22">Career/Wealth</ion-radio>
+                                <ion-radio name="category" ng-model="value.category" ng-value="23">Relationships</ion-radio>
+                            </ion-list>
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <span class="input-label">Public / Private</span>
+                                                                <input type="text" class="border" placeholder="Public / Private" name="gpubprivat" ng-model="data.gpubprivat">
+                        </label>
+                        <label class="item item-input item-stacked-label">
+                            <ion-list>
+                                <ion-radio name="status" ng-model="value.status" ng-value="'Public'">Public</ion-radio>
+                                <ion-radio name="status" ng-model="value.status" ng-value="'Private'">Private</ion-radio>
+                            </ion-list>
+                        </label>
+                        <div class="item item-input item-stacked-label">
+                            <span class="input-label">To-Do List</span>
+                            <a style="float: right !important" ng-click="addFiled()">
+                                <i class="ion-ios-plus-outline" style="font-size:32px"></i>
+                            </a>
+                        </div>
+                        <div class="item item-input item-stacked-label">
+                            <div class="row" ng-repeat="choice in choices">
+                                <div class="item item-input">
+                                    <input type="text" name="list[]" ng-model="choice.list" placeholder="Add new list item" style="border: 1px solid #ddd;">
+                                </div>
+                                <a ng-click="removeFiled()"><i class="ion-ios-minus-outline" style="font-size:32px"></i></a>
+                            </div>
+                        </div>
+                        <div class="item item-input item-stacked-label">
+                            <ion-list>
+                                <ion-checkbox ng-repeat="y in items" ng-model="checkItems[y]"  ng-value="{{items.indexOf(y)}}"><span class="padding-left">{{y}}</span></ion-checkbox>
+                            </ion-list>
+                        </div>
+                        <div class="item item-input item-stacked-label" ng-if="!items.length">No items in to-do List!</div>
+                        <div class="item item-input item-stacked-label">
+                            <i class="ion-chatbox" style="font-size:22px"></i>&nbsp;<a href="#/app/comment" style="text-decoration:none; color:#000">View Comments</a>
+                        </div>
+                        <div class="item item-input item-stacked-label">
+                            <i class="ion-thumbsup" style="font-size:22px"></i>&nbsp;<a href="#" style="text-decoration:none; color:#000">View Likes</a>
+                        </div>
+                        <button class="button button-positive button-full" type="submit">Update</button>
+                    </div>
+                </form>-->
+        <ion-item class="ion-item">
+            <div class="item-image">
+                <img ng-src="{{editimage}}" id="myImage" />
+                <h1>{{value.title}}</h1>
+            </div>
+            <div class="item-content article-content">
+                <div class="row item-tools">
+                    <div class="item item-text-wrap">
+                        {{CONTENT}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col padding"><strong>Category:</strong> {{value.category}}</div>
+                </div>
+                <div class="row">
+                    <div class="col padding"><strong>Goal Name:</strong> {{value.title}}</div>
+                </div>
+                <!--                <div class="row">
+                                    <div class="col padding"><strong>Goal Date:</strong> {{value.date}}</div>
+                                </div>-->
+                <!--                <div class="row">
+                                    <div class="col padding"><strong>Public / Private:</strong> {{value.status}}</div>
+                                </div>-->
+                <div class="row">
+                    <div class="col padding"><strong>To-do List:</strong></div>
+                </div>
+                <div class="row" ng-repeat="y in items">
+                    <div class="col padding"><i class="ion-ios-play"></i>&nbsp;{{y}}</div>
+                </div>
+            </div>
+            <button class="button button-full button-positive" ng-click="addIdeaToUser()">
+                <i class="icon ion-social-dropbox-outline placeholder-icon"></i>&nbsp;Add this to your Bucket List !
+            </button>
+        </ion-item>            
+    </ion-content>
+</ion-view>

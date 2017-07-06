@@ -1,0 +1,22 @@
+$positive:                        #f96332 !default;
+$energized:                       #ec5d2f !default;
+
+$font-family-custom:              'Montserrat', sans-serif;
+$font-family-sans-serif:          $font-family-custom;
+$font-family-light-sans-serif:    $font-family-custom;
+$font-size-base:                  13px !default;
+$font-size-large:                 16px !default;
+$font-size-small:                 11px !default;
+
+$line-height-base:                2 !default; // 26/13
+
+$item-font-size:                  13px !default;
+$item-border-width:               0 !default;
+$item-padding:                    0 !default;
+
+$grid-padding-width:              0 !default;
+
+$tabs-height:                     85px !default;
+
+// Import Montserrat Webfont
+@import url(http://fonts.googleapis.com/css?family=Montserrat:400,700);

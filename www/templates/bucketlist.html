@@ -1,0 +1,53 @@
+<style>
+     input[type="text"]
+    {
+        color:#000 !important;
+    }
+    
+     ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  color: #000 !important;
+}
+    .button
+    {
+        border-radius: 0px;
+        height: 45px !important;
+    }
+    .item-input-wrapper
+    {
+        color: #000 !important;
+        border-bottom: 2px solid #f8f8f8;
+        border-radius: 0px;
+        height: 44px !important;
+    }
+</style>
+<ion-view view-title="{{category}}">
+    <ion-content scroll="false">
+        <!--        <h1>Bucket List</h1>-->
+        <!--        <div class="list list-inset">
+                    <label class="item item-input">
+                        <i class="icon ion-search placeholder-icon"></i>
+                        <input type="text" placeholder="Search" ng-model="searchKeyword">
+                    </label>
+                </div>-->
+        <ion-list class="list">
+            <div class="item item-input-inset">
+                <label class="item-input-wrapper">
+                    <input type="text" placeholder="Search bucket here..." ng-model="search">
+                </label>
+                <button class="button button-small padding">
+                    <i class="ion-search" style="font-size:22px"></i>
+                </button>
+            </div>
+
+        </ion-list>
+        <ion-scroll direction="y">
+        <ion-list class="list">
+            <ion-item class="category-ion-item" ng-click="getItemDetails({{val.ID}})" ng-repeat="val in listData| removeBlackItems | filter:search track by $index">
+                <div class="row row-wrap category-items padding" style="font-size:14px">
+                    <i class="ion-ios-arrow-thin-right" style="font-size:22px"></i>&nbsp;{{val.post_title}} 
+                </div>
+            </ion-item>
+        </ion-list>
+        </ion-scroll>
+    </ion-content>
+</ion-view>

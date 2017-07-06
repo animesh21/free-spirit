@@ -1,0 +1,116 @@
+<style>
+    .item
+    {
+        padding:1px !important;
+    }
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    input[type="date"]
+    {
+        color:#000 !important;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+</style>
+<ion-view view-title="Edit Your BucketList">
+    <ion-pane>
+        <ion-content class="has-header">
+<!--            <ion-list class="list">
+                <ion-item class="category-ion-item">
+                    <progress id="progressbar" max="100" value="23" class="progress"> 
+                </ion-item>
+            </ion-list>-->
+            <ion-list class="list">
+                <ion-item class="category-ion-item" ng-show="enable">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <strong>&nbsp;GOAL PROGRESS ({{progress}}%)</strong>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item" ng-show="enable">
+                    <div class="row row-wrap category-items padding">
+                        <progress id="progressbar" max="100" value="{{progress}}" class="progress"> </progress>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <strong>1.&nbsp;BUCKET NAME</strong>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <input type="text" class="border" name="name" ng-model="record.title"   ng-value="record.title" />
+
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <strong>2.&nbsp;BUCKET CATEGORY</strong>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <div data-tap-disabled="true">
+                            <select ng-options="item as item.label for item in items track by item.id" ng-model="record.selected" required>
+<!--                                <option value="">Select</option>
+                                <option value="18" ng-selected="true">Health</option>
+                                <option value="19">Sports</option>
+                                <option value="20">Travel</option>
+                                <option value="21">Learn</option>
+                                <option value="22">Career/Wealth</option>
+                                <option value="23">Relationships</option>-->
+                            </select>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <strong>3.&nbsp;GOAL DATE</strong>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <!-- {{record.date}} -->
+<!--                        <input type="text" class="border" name="name"   ng-value="record.date" ng-click="datepicker()"/>-->
+                         <input type="text" onfocus="(this.type = 'date')" class="border" placeholder="Goal Date.." name="gdate" ng-model="record.date" required>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <strong>4.&nbsp;PUBLIC/PRIVATE</strong>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <div data-tap-disabled="true">
+                            <select ng-options="item as item.label for item in options track by item.id" ng-model="record.pp" required></select>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item" ng-show="enable">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <strong>5.&nbsp;TO-DO LIST</strong>
+                    </div>
+                </ion-item>
+                <ion-item class="category-ion-item" ng-repeat="(key, value) in item track by $index" ng-show="enable">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        <ion-checkbox ng-model="checkItems[key]"  ng-checked="checked[key]">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{{value}}</ion-checkbox>
+                    </div>
+                </ion-item>
+
+                <ion-item class="category-ion-item" ng-show="item.length == 'undefined'">
+                    <div class="row row-wrap category-items padding" style="font-size:14px">
+                        No items in to do list
+                    </div>
+                </ion-item>
+            </ion-list>
+            <button class="button button-full button-positive" ng-click="updateTodo({{record.BUCKET}});updateBucket({{record}})">
+                Update Bucket List Goal
+            </button>
+        </ion-content>
+    </ion-pane>
+</ion-view>

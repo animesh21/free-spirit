@@ -1,0 +1,67 @@
+<style>
+    .tab-item
+    {
+        font-size: 11px !important;
+    }
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    .category-item-image img
+    {
+        height: 92px !important;;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    .item-input-wrapper
+    {
+        color: #000 !important;
+        border-bottom: 2px solid #f8f8f8;
+        border-radius: 0px;
+        height: 44px !important;
+    }
+    .button
+    {
+        border-radius: 0px;
+        height: 45px !important;
+    }
+</style>
+<ion-view view-title="UBL">
+    <ion-pane>
+        <ion-tabs class="tabs-energized">
+            <ion-tab title="UBL Store">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-refresher on-refresh="doRefresh()">
+
+                        </ion-refresher>
+                        <ion-list class="list">
+                            <ion-item class="category-ion-item" ng-repeat="y in ublData" ng-click="getUblCatData({{y.term_id}})">
+                                <div class="row row-wrap category-items padding" style="font-size:14px; text-transform: uppercase !important">
+                                    <i class="ion-ios-play"></i>&nbsp;{{y.name}}
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="TFSP Merchandise" on-select="getMerchandiseData()">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list>
+                            <div class="row row-wrap row-no-padding category-items">
+                                <ion-item class="col col-50" ng-repeat="y in merchand" ng-click="getSingleItem({{y.id}})">
+                                    <div class="item-image">
+                                        <img class="user-avatar" src="{{y.image}}" alt="image" >
+                                        <h3>{{y.title}}</h3>
+                                    </div>
+                                </ion-item>
+                            </div>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+        </ion-tabs>
+    </ion-pane>
+</ion-view>

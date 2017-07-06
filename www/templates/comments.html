@@ -1,0 +1,26 @@
+<ion-view view-title="Comments">
+    <ion-content>
+        <br>
+        <div id="text">
+            <div class="list list-inset" ng-repeat="y in comments">
+                <div class="item itex-text-wrap"><span class="calm"><small>{{y.comment_author}}</small></span>&nbsp;<small>{{y.comment_content}}</small><span class="calm" style="float:right"><strong>0</strong>&nbsp;<i class="ion-thumbsup"></i></span></div>
+            </div>
+            <div class="list list-inset" ng-if="!comments.length">
+                <div class="item itex-text-wrap">No Comments Available</div>     
+            </div>
+        </div>
+        <form  name="chatForm" novalidate>
+            <div class="list list-inset">
+                <div class="assertive" ng-if="chatForm.$submitted" ng-show="chatForm.chat.$error.required">!This Field is required</div>
+                <div class="item item-input-inset">
+                    <label class="item-input-wrapper">
+                        <input type="text" name="chat" ng-model="data.chat" placeholder="Enter Comments...." required>
+                    </label>
+                    <button class="button button-small button-positive" ng-click="submitComment(chatForm, data)">
+                        Add
+                    </button>
+                </div>
+            </div>
+        </form>
+    </ion-content>
+</ion-view>

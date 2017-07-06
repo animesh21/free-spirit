@@ -1,0 +1,125 @@
+<style>
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    .category-item-image img
+    {
+        height: 92px !important;;
+    }
+    .button-stable
+    {
+        border-radius: 0px !important;
+    }
+    .button-royal
+    {
+        border-radius: 0px !important;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    .item-input-wrapper
+    {
+        color: #000 !important;
+        border-bottom: 2px solid #f8f8f8;
+        border-radius: 0px;
+        height: 44px !important;
+    }
+    .button
+    {
+        border-radius: 0px;
+        height: 45px !important;
+    }
+</style>
+<ion-view view-title="Following">
+    <ion-pane>
+        <ion-tabs class="tabs-energized">
+            <ion-tab title="Search">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list>
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" placeholder="Search People here..." ng-model="search" name="search" ng-change="showSearchInput()">
+                                </label>
+                                <button class="button button-small padding">
+                                    <i class="ion-search" style="font-size:22px"></i>
+                                </button>
+                            </div>
+                        </ion-list>
+                        <ion-list ng-show="input">
+                            <ion-item class="category-ion-item" ng-repeat="x in user| filter:search" ng-click="addFollowing({{x.ID}}); get_user_following()">
+                                <div class="row row-wrap category-items">
+                                    <div class="category-item-image col col-33 padding-left">
+                                        <img class="user-avatar" src="{{image}}" height="80" width="80" alt="user.svg">
+                                    </div>
+                                    <div class="category-item-tools col col-66">
+                                        <h3>{{x.display_name}}</h3>
+                                        <div class="row">
+                                            <div class="col col-30"><i class="icon ion-email"></i>{{x.user_email}}</div>
+                                            <div class="col col-50 right-align item-category"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="Following" on-select="get_particular_following()">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list>
+                            <ion-item class="category-ion-item" ng-repeat="y in particular_followers">
+                                <div class="row row-wrap category-items">
+                                    <div class="category-item-image col col-33 padding-left">
+                                        <img class="user-avatar" src="{{image}}" height="80" width="80" alt="user.svg">
+                                    </div>
+                                    <div class="category-item-tools col col-66">
+                                        <h3>{{y.data.display_name}}</h3>
+                                        <div class="row">
+                                            <div class="col col-30"><i class="icon ion-email"></i>{{y.data.user_email}}</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-show="!particular_followers.length">
+                                
+                                    <h3 class="item-text-wrap">Follow friends and others to see their posts first ! To follow, go to a user's profile</h3>
+                                
+                            </ion-item>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="Followers" on-select="getFollowingData()">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list>
+                            <ion-item class="category-ion-item" ng-repeat="y in fdata">
+                                <div class="row row-wrap category-items">
+                                    <div class="category-item-image col col-33 padding-left">
+                                        <img class="user-avatar" src="{{image}}" height="80" width="80" alt="user.svg">
+                                    </div>
+                                    <div class="category-item-tools col col-66">
+                                        <h3>{{y.data.display_name}}</h3>
+                                        <div class="row">
+                                            <div class="col col-30"><i class="icon ion-email"></i>{{y.data.user_email}}</div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-show="!fdata.length">
+                                <div class="category-item-tools col col-66">
+                                        <h3>No Records available...</h3>
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+        </ion-tabs>
+    </ion-pane>
+</ion-view>

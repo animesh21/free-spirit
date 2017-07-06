@@ -1,0 +1,45 @@
+{
+	"totalRows": 8,
+	"rows": [
+		{
+			"id": 1,
+			"title": "Fashion",
+			"img": "http://i.imgur.com/IKZvcml.png"
+		},
+		{
+			"id": 2,
+			"title": "Science",
+			"img": "http://i.imgur.com/vB7AB2P.png"
+		},
+		{
+			"id": 3,
+			"title": "Auto",
+			"img": "http://i.imgur.com/ev2YKqb.png"
+		},
+		{
+			"id": 4,
+			"title": "Technology",
+			"img": "http://i.imgur.com/ThLJUPg.png"
+		},
+		{
+			"id": 5,
+			"title": "Finances",
+			"img": "http://i.imgur.com/gpVSohI.png"
+		},
+		{
+			"id": 6,
+			"title": "Environement",
+			"img": "http://i.imgur.com/P2q3Uk8.png"
+		},
+		{
+			"id": 7,
+			"title": "Sport",
+			"img": "http://i.imgur.com/r6XV9GG.png"
+		},
+		{
+			"id": 8,
+			"title": "Travel",
+			"img": "http://i.imgur.com/LPVCdsP.png"
+		}
+	]
+}

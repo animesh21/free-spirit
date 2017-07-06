@@ -1,0 +1,101 @@
+<style>
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    .item-select select
+    {
+        max-width: 100% !important;
+    }
+    .profile-item {
+        text-align: center;
+    }
+
+    .profile-picture {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+/*                border-radius: 50%;*/
+        padding: 3px;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+/*                border-radius: 50%;*/
+    }
+
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    .upload
+    {
+        width: 50% !important;
+        margin-left:66px !important;
+    }
+</style>
+<ion-view view-title="{{user.name}} Profile">
+    <ion-content ng-init="get_user_following()">
+        <div class="content padding">
+            <form name="userUpdate" novalidate>
+                <!--                <div class="list list-inset">
+                                    <ion-item class="profile-item">
+                
+                                        <div class="profile-picture big-profile-picture">
+                                            <img src="http://studio-tesseract.co/freesprite/wp-content/uploads/2017/05/joglo-150x150.jpg" alt="noimage.jpg">
+                                        </div>
+                                    </ion-item>
+                                </div>-->
+                <div class="list">
+                    <div class="profile-picture big-profile-picture">
+                            <img src="http://studio-tesseract.co/freesprite/wp-content/uploads/2017/05/joglo-150x150.jpg" alt="noimage.jpg">
+                        </div>
+                </div>
+                    <div class="list">
+                        <ul class="list padding-left">
+                            <li class="item item-text-wrap">
+                                <strong>NAME:-</strong> 
+                            </li>
+                            <li class="item item-text-wrap">
+                                {{user.name}}
+                            </li>
+                            <li class="item item-text-wrap">
+                                <strong>EMAIL:-</strong> 
+                            </li>
+                            <li class="item item-text-wrap">
+                                {{user.email}}
+                            </li>
+                            <li class="item item-text-wrap">
+                                <strong>JOINED:-</strong> 
+                            </li>
+                            <li class="item item-text-wrap">
+                                {{user.active | date}}
+                            </li>
+                            <li class="item item-text-wrap">
+                                <strong>NO OF FOLLOWERS:-</strong> 
+                            </li>
+                            <li class="item item-text-wrap">
+                                0
+                            </li>
+                        </ul>
+                    </div>
+                
+                <button class="button {{class}} button-full" ng-click="follow_unfollow()" />{{follow}}</button>
+
+            </form>
+        </div>
+    </ion-content>
+</ion-view>

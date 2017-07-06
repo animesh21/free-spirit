@@ -1,0 +1,246 @@
+<style>
+    .item-select select 
+    {
+        padding: 0 15px 0 0 !important;
+    }
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+    input[type="text"]
+    {
+        color:#000 !important;
+    }
+    input[type="date"]
+    {
+        color:#000 !important;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    .profile-item {
+        text-align: center;
+    }
+
+    .profile-picture {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        padding: 3px;
+        -webkit-box-sizing: content-box;
+        -moz-box-sizing: content-box;
+        box-sizing: content-box;
+        margin: 0 auto;
+        width: 100px;
+        height: 100px;
+        overflow: hidden;
+    }
+
+    .profile-picture img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .profile-name {
+        padding-top: 20px;
+        font-size: x-large !important;
+        font-weight: bold !important;
+        text-transform: capitalize;
+    }
+    .border
+    {
+        border: 1px solid #ddd !important;
+        width: 96% !important;
+    }
+    .upload
+    {
+        width: 50% !important;
+        margin-left:66px !important;
+    }
+    .category-item-image img
+    {
+        height: 92px !important;;
+    }
+    .dummy
+    {
+        position: relative !important;
+        left: -16px;
+        width: 227px;
+    }
+</style>
+<ion-view view-title="Bucket List">
+    <ion-pane>
+        <ion-tabs class="tabs-energized">
+            <ion-tab title="My Bucket">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list>
+                            <ion-item class="category-ion-item" ng-repeat="x in mybucket| filter: searchBucket">
+                                <div class="row row-wrap category-items">
+                                    <div class="category-item-image col col-33">
+                                        <img class="user-avatar" src="{{x.image}}" alt="{{x.image}}" width="106px" height="97px">
+                                    </div>
+                                    <div class="category-item-tools col col-66">
+                                        <h3 ng-click="getData({{x.ID}})">{{x.title}} </h3>
+                                        <div class="row">
+                                            <div class="col col-30"><i class="icon ion-person"></i>{{x.author}}</div>
+                                            <div class="col col-40 right-align item-category"><i class="icon ion-clock"></i>{{x.date}}</div>
+                                            <div class="col col-30 right-align item-category assertive" ng-click="delete_bucket({{x.ID}});"><i class="ion-android-delete" style="font-size:18px !important"></i></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-show="!mybucket.length">
+                                <div class="row row-wrap category-items">
+                                    <div class="category-item-tools item-text-wrap">
+                                        No Items. Time to get started and add items to your bucket list !
+                                    </div>
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="Add Item" on-select="checkplan();getUserBucketCount()">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <div class="list list-inset">
+                            <form name="goalForm" novalidate id="goalFrm" ng-submit="saveIdea(goalForm, data)">
+                                <ion-item class="profile-item" ng-click="takepic()">
+                                    <div class="profile-picture big-profile-picture">
+                                        <img src="{{editimage}}" alt="{{editimage}}">
+                                    </div>
+                                </ion-item>
+<!--                                                                <div class="item item-input item-stacked-label">
+                                                                    <button type="button" class="button button-positive button-full upload" ng-click="takepic()"><small>Camera / Media</small></button>
+                                                                </div>
+                                                                <label class="item item-input">
+                                                                    <span class="input-label">Plan Name:-&nbsp;<strong>({{PLAN_TEXT}})</strong></span>
+                                                                </label>
+                                                                <label class="item item-input">
+                                                                    <span class="input-label">Bucket Posted:-&nbsp;<strong>({{VALUE_COUNT}} / {{PLAN_COUNT}})</strong></span>
+                                                                </label>-->
+                                <label class="item item-input item-select">
+                                    <span class="input-label">Category</span>
+                                    <span class="assertive" ng-if="goalForm.$submitted" ng-show="goalForm.category.$error.required"><small>* required !</small></span>
+                                    <div data-tap-disabled="true">
+                                        <select ng-model="data.category" name="category" required>
+                                            <option value="">Select</option>
+                                            <option value="18">Health</option>
+                                            <option value="19">Sports</option>
+                                            <option value="20">Travel</option>
+                                            <option value="21">Learn</option>
+                                            <option value="22">Career/Wealth</option>
+                                            <option value="23">Relationships</option>
+                                        </select>
+                                    </div>
+                                </label>
+                                <!--                                <label class="item item-input item-stacked-label">
+                                                                    <span class="input-label">Category</span>
+                                                                    <ion-list>
+                                                                        <ion-radio name="category" ng-model="data.category" ng-value="'18'">Health</ion-radio>
+                                                                        <ion-radio name="category" ng-model="data.category" ng-value="'19'">Sports</ion-radio>
+                                                                        <ion-radio name="category" ng-model="data.category" ng-value="'20'">Travel</ion-radio>
+                                                                        <ion-radio name="category" ng-model="data.category" ng-value="'21'">Learn</ion-radio>
+                                                                        <ion-radio name="category" ng-model="data.category" ng-value="'22'">Career/Wealth</ion-radio>
+                                                                        <ion-radio name="category" ng-model="data.category" ng-value="'23'">Relationships</ion-radio>
+                                                                    </ion-list>
+                                                                </label>-->
+                                <!--                                 <label class="item item-input item-stacked-label">
+                                                                     <span class="input-label">Category</span><span ng-click="showModal();" class="padding" style="margin-left:146px"><i style="font-size:20px" class="ion-android-arrow-dropdown"></i></span>
+                                                                </label>-->
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Goal Name</span>
+                                    <span class="assertive" ng-if="goalForm.$submitted" ng-show="goalForm.gname.$error.required"><small>* required !</small></span>
+                                    <input type="text" class="border" placeholder="Goal Name.." name="gname" ng-model="data.gname" required>
+                                </label>
+                                <label class="item item-input item-stacked-label">
+                                    <span class="input-label">Goal Date</span>
+                                    <span class="assertive" ng-if="goalForm.$submitted" ng-show="goalForm.gdate.$error.required"><small>* required !</small></span>
+                                    <!--                                    <input type="text" onfocus="(this.type = 'date')" class="border" placeholder="Goal Date.." name="gdate" ng-model="data.gdate" required ng-click="datepicker()">-->
+                                    <input type="text" onfocus="(this.type = 'date')" class="border" placeholder="Goal Date.." name="gdate" ng-model="data.gdate" required>
+                                </label>
+                                <label class="item item-input item-select">
+                                    <span class="input-label">Private / Public</span>
+                                    <span class="assertive" ng-if="goalForm.$submitted" ng-show="goalForm.gpubprivat.$error.required"><small>* required !</small></span>
+                                    <div data-tap-disabled="true">
+                                        <select name="gpubprivat" ng-model="data.gpubprivat" required>
+                                            <option value="">Select</option>
+                                            <option value="Public">Public</option>
+                                            <option value="Private">Private</option>
+                                        </select>
+                                    </div>
+                                </label>
+                                <!--                                <label class="item item-input item-stacked-label">
+                                                                    <span class="input-label">Public / Private</span>
+                                                                    <ion-list>
+                                                                        <ion-radio name="gpubprivat" ng-model="data.gpubprivat" ng-value="'Public'">Public</ion-radio>
+                                                                        <ion-radio name="gpubprivat" ng-model="data.gpubprivat" ng-value="'Private'">Private</ion-radio>
+                                                                    </ion-list>
+                                                                </label>-->
+                                <div id="enable" ng-show="enable">
+                                    <label class="item item-input item-stacked-label">
+                                        <span class="input-label">Budget</span>
+                                        <input type="text" sg-number-input fraction-size="2" class="border" placeholder="Budget.." name="budget" ng-model="data.budget">
+                                    </label>
+                                    <div class="item item-input item-stacked-label">
+                                        <span class="input-label">To-Do List</span>
+                                        <a style="float: right !important" ng-click="addFiled()">
+                                            <small><strong>Add</strong></small>
+                                        </a>
+                                    </div>
+                                    <div class="item item-input item-stacked-label">
+                                        <div class="row" ng-repeat="choice in choices">
+                                            <div class="item item-input">
+                                                <input type="text" class="dummy" name="list[]" ng-model="choice.list" placeholder="List Item" style="border: 1px solid #ddd">
+                                            </div>
+                                            <a ng-click="removeFiled()" class="remove"><small><strong>Remove</strong></small></a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <button class="button button-positive button-full" type="submit">Save</button>
+                            </form>
+                        </div>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <ion-tab title="Ideas">
+                <ion-pane>
+                    <ion-content class="has-header">
+                        <ion-list class="list">
+                            <ion-item class="category-ion-item" ng-click="getListData(18)">
+                                <div class="row row-wrap category-items padding" style="font-size:14px">
+                                    <i class="ion-ios-medkit" style="font-size:22px"></i>&nbsp;Health
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-click="getListData(19)">
+                                <div class="row row-wrap category-items padding" style="font-size:14px">
+                                    <i class="ion-ios-football" style="font-size:22px"></i>&nbsp;Sports
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-click="getListData(20)">
+                                <div class="row row-wrap category-items padding" style="font-size:14px">
+                                    <i class="ion-android-bus" style="font-size:22px"></i>&nbsp;Travel
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-click="getListData(21)">
+                                <div class="row row-wrap category-items padding" style="font-size:14px">
+                                    <i class="ion-ios-book" style="font-size:22px"></i>&nbsp;Learn
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-click="getListData(22)">
+                                <div class="row row-wrap category-items padding" style="font-size:14px">
+                                    <i class="ion-university" style="font-size:22px"></i>&nbsp;Career / Wealth
+                                </div>
+                            </ion-item>
+                            <ion-item class="category-ion-item" ng-click="getListData(23)">
+                                <div class="row row-wrap category-items padding" style="font-size:14px">
+                                    <i class="ion-ios-heart" style="font-size:22px"></i>&nbsp;Relationships
+                                </div>
+                            </ion-item>
+                        </ion-list>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+        </ion-tabs>
+    </ion-pane>
+</ion-view>

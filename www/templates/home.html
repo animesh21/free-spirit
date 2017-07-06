@@ -1,0 +1,150 @@
+<style>
+    input[type="text"] {
+        color: #000 !important;
+    }
+
+    .category-item-image img {
+        height: 92px !important;;
+    }
+
+    ::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+        color: #000 !important;
+    }
+
+    .item-input-wrapper {
+        color: #000 !important;
+        border-bottom: 2px solid #f8f8f8;
+        border-radius: 0px;
+        height: 44px !important;
+    }
+
+    .button {
+        border-radius: 0px;
+        height: 45px !important;
+    }
+
+    ion-scroll[direction=y] {
+        height: 100vh;
+    }
+
+    /*    ion-scroll[direction=y] {
+      height: 100vh;
+    }*/
+</style>
+<ion-view view-title="Home">
+    <ion-pane>
+        <ion-tabs class="tabs-energized">
+            <ion-tab title="All">
+                <ion-pane>
+                    <ion-content class="has-header" scroll="false">
+                        <!--                        <ion-refresher on-refresh="doRefresh()">
+
+                                                </ion-refresher>-->
+                        <ion-list>
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" placeholder="Search Bucket here..." ng-model="searchBucket"
+                                           name="searchBucket">
+                                </label>
+                                <button class="button button-small padding">
+                                    <i class="ion-search" style="font-size:22px"></i>
+                                </button>
+                            </div>
+                        </ion-list>
+
+                        <!--                            <ion-refresher on-refresh="doRefresh()">
+
+                                                </ion-refresher>-->
+                        <ion-scroll direction="y">
+                            <ion-refresher on-refresh="doRefresh()">
+
+                            </ion-refresher>
+                            <ion-list>
+                                <ion-item class="category-ion-item" ng-repeat="x in bucket| filter: searchBucket">
+                                    <div class="row row-wrap category-items">
+                                        <div class="category-item-image col col-33">
+                                            <img class="user-avatar" src="{{ x.image }}" alt="{{ x.image }}"
+                                                 width="106px" height="97px">
+                                        </div>
+                                        <div class="category-item-tools col col-66">
+                                            <h3 ng-click="getData({{ x.ID }})">{{ x.title }}</h3>
+                                            <div class="row">
+                                                <div class="col col-30" ng-click="goToProfile({{ x.author_id }})"><i
+                                                        class="icon ion-person"></i>{{ x.author }}</div>
+                                                <div class="col col-50 right-align item-category"><i
+                                                        class="icon ion-clock"></i>{{ x.date }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ion-item>
+
+                            </ion-list>
+                        </ion-scroll>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+            <!--			<ion-tab title="Popular">
+                                            <ion-pane>
+                                                    <ion-content class="has-header">
+                                                            <ion-list>
+                                                                    <div class="row row-wrap row-no-padding category-items">
+                                                                            <ion-item class="col col-50" data-ng-repeat="category in categoriesCtrl.categories | orderBy:'title' track by $index" data-ui-sref="app.category({categoryId: category.id})">
+                                                                                    <div class="item-image">
+                                                                                            <img data-ng-src="{{category.img}}" alt="{{category.title}}" />
+                                                                                            <h3>{{category.title}}</h3>
+                                                                                    </div>
+                                                                            </ion-item>
+                                                                    </div>
+                                                            </ion-list>
+                                                    </ion-content>
+                                            </ion-pane>
+                                    </ion-tab>-->
+            <ion-tab title="Following" on-select="getFollowingListPost()">
+                <ion-pane>
+                    <ion-content class="has-header" scroll="false">
+                        <ion-list>
+                            <div class="item item-input-inset">
+                                <label class="item-input-wrapper">
+                                    <input type="text" placeholder="Search Following here..." ng-model="searchfollowing"
+                                           name="searchBucket">
+                                </label>
+                                <button class="button button-small padding">
+                                    <i class="ion-search" style="font-size:22px"></i>
+                                </button>
+                            </div>
+                        </ion-list>
+                        <ion-scroll direction="y">
+                            <ion-list>
+                                <ion-item class="category-ion-item" ng-repeat="z in following| filter: searchfollowing">
+                                    <div class="row row-wrap category-items" ng-click="getData({{ z.ID }})">
+                                        <div class="category-item-image col col-33">
+                                            <img class="user-avatar" src="{{ z.image }}" alt="{{ z.image }}"
+                                                 width="106px" height="97px">
+                                        </div>
+                                        <div class="category-item-tools col col-66">
+                                            <h3>{{ z.title }}</h3>
+                                            <div class="row">
+                                                <div class="col col-30"><i class="icon ion-person"></i>{{ z.author }}
+                                                </div>
+                                                <div class="col col-50 right-align item-category"><i
+                                                        class="icon ion-clock"></i>{{ z.date }}</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </ion-item>
+                                <ion-item class="category-ion-item" ng-show="!following.length">
+                                    <div class="row row-wrap category-items">
+                                        <div class="item-text-wrap category-item-tools">
+                                            Follow friends and others to see their posts first!
+                                            To follow, go to a user's profile
+                                        </div>
+                                    </div>
+                                </ion-item>
+                            </ion-list>
+                        </ion-scroll>
+                    </ion-content>
+                </ion-pane>
+            </ion-tab>
+        </ion-tabs>
+    </ion-pane>
+</ion-view>
