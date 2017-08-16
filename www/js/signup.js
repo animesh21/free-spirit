@@ -1,43 +1,16 @@
 angular.module('signup.controllers', [])
 
   .controller('SignUp', function ($scope, $http, $ionicModal, $ionicPopup, $timeout, $state, $ionicLoading, PaypalService) {
-    $scope.data = [];
-    $scope.show = 1;
-    $scope.enable = 1;
-    $scope.display = 4;
-    $scope.flag = true;
-
-
-    // variable for first one month free
-    $scope.one_month = false;
-
-    //Step One Validation
-    $scope.stepOneValidation = function () {
-      if ($scope.data.name == '' || $scope.data.name == null || $scope.data.name == 'undefined') {
-        return false;
-      } else if ($scope.data.email == '' || $scope.data.email == null || $scope.data.birthday == 'undefined') {
-        return false;
-      } else if ($scope.data.password == '' || $scope.data.password == null || $scope.data.password == 'undefined') {
-        return false;
-      } else if ($scope.data.birthday == '' || $scope.data.birthday == null || $scope.data.birthday == 'undefined') {
-        return false;
-      } else {
-        return true;
-      }
-    };
-
-    //Step Two Validation
-    $scope.stepTwoValidation = function () {
-      if ($scope.choice == '' || $scope.choice == null || $scope.choice == 'undefined') {
-        return false;
+    $scope.fb = localStorage.getItem('fb');
+    console.log('Value of fb in local storage: ' + $scope.fb);
+    console.log($scope.fb == 1);
+    $scope.showing = function ($argId) {
+      if ($scope.fb) {
+        $scope.validate = true;  // all fb users are valid
       }
       else {
-        return true;
+        $scope.validate = $scope.stepOneValidation();
       }
-    };
-
-    $scope.showing = function ($argId) {
-      $scope.validate = $scope.stepOneValidation();
       if ($scope.validate == false) {
         $scope.showAlert("Error", "<style>.popup {background: #f96332 !important;} .popup-body p{color:#fff !important} .popup-head h3{color:#fff !important} .button{background:#fff !important; color:#000 !important}</style><p>Please Enter required Fileds!<p/>");
       }
@@ -117,6 +90,52 @@ angular.module('signup.controllers', [])
           }
           console.log('value of display: ' + $scope.display);
         }
+      }
+    };
+
+
+    $scope.data = [];
+    $scope.enable = 1;
+    $scope.display = 4;
+    $scope.flag = true;
+    if ($scope.fb) {
+      $scope.show = 2;
+      $scope.data.name = '';
+      $scope.data.email = localStorage.getItem('username');
+      $scope.data.password = '';
+      $scope.data.birthday = '';
+      $scope.showing(2);
+    }
+    else {
+      $scope.show = 1;
+    }
+
+
+    // variable for first one month free
+    $scope.one_month = false;
+
+    //Step One Validation
+    $scope.stepOneValidation = function () {
+      if ($scope.data.name == '' || $scope.data.name == null || $scope.data.name == 'undefined') {
+        return false;
+      } else if ($scope.data.email == '' || $scope.data.email == null || $scope.data.birthday == 'undefined') {
+        return false;
+      } else if ($scope.data.password == '' || $scope.data.password == null || $scope.data.password == 'undefined') {
+        return false;
+      } else if ($scope.data.birthday == '' || $scope.data.birthday == null || $scope.data.birthday == 'undefined') {
+        return false;
+      } else {
+        return true;
+      }
+    };
+
+    //Step Two Validation
+    $scope.stepTwoValidation = function () {
+      if ($scope.choice == '' || $scope.choice == null || $scope.choice == 'undefined') {
+        return false;
+      }
+      else {
+        return true;
       }
     };
 

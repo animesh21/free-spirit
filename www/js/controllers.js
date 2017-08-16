@@ -101,7 +101,10 @@ angular.module('starter.controllers', [])
                 localStorage.setItem('uid', $scope.ID);
                 localStorage.setItem('username', $scope.Username);
                 localStorage.setItem('loggedIn', $scope.loggedIn);
-                $state.go('app.home');
+
+                // $state.go('app.home');
+                localStorage.setItem('fb', 1);
+                $state.go('signup');  // testing plan selection and payment
               },
               function error(response) {
                 console.error('Error from server: ' + error);
@@ -112,7 +115,7 @@ angular.module('starter.controllers', [])
               console.log("facebookConnectPlugin_api_err-->> " + JSON.stringify(err));
             });
           }, function (err) {
-            console.log('FB Response: ' + JSON.stringify(err))
+            console.log('Problem login with fb: ' + JSON.stringify(err))
           });
         }
         else if (response.status == "connected") {
@@ -138,7 +141,11 @@ angular.module('starter.controllers', [])
                 localStorage.setItem('uid', $scope.ID);
                 localStorage.setItem('username', $scope.Username);
                 localStorage.setItem('loggedIn', $scope.loggedIn);
-                $state.go('app.home');
+                // $state.go('app.home');
+
+                // testing payment redirection
+                localStorage.setItem('fb', 1);
+                $state.go('signup');
               },
               function error(response) {
               }

@@ -193,10 +193,11 @@
                                 ng-click="showing(3)">Next
                         </button>
                     </label>
-                    <div class="row form-links">
+                    <div class="row form-links" ng-hide="fb == 1">
                         <div class="col center-align">
-                            <small>Already registered ?</small>
-                            <a data-ui-sref="login">Login Here </a></div>
+                            <small> Already registered ?</small>
+                            <a data-ui-sref="login">Login Here </a>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -253,7 +254,7 @@
                     <label class="item form-button">
                         <button class="button button-block button-light" type="submit">Submit</button>
                     </label>
-                    <div class="row form-links">
+                    <div class="row form-links" ng-hide="fb == 1">
                         <div class="col center-align">
                             <small>Already registered ?</small>
                             <a data-ui-sref="login">Login Here </a></div>
@@ -310,7 +311,7 @@
                     <label class="item form-button">
                         <button class="button button-block button-light" type="submit">Submit</button>
                     </label>
-                    <div class="row form-links">
+                    <div class="row form-links" ng-hide="fb == 1">
                         <div class="col center-align">
                             <small>Already registered ?</small>
                             <a data-ui-sref="login">Login Here </a></div>
@@ -374,10 +375,11 @@
                     <label class="item form-button">
                         <button class="button button-block button-light" type="submit">Submit</button>
                     </label>
-                    <div class="row form-links">
+                    <div class="row form-links" ng-hide="fb == 1">
                         <div class="col center-align">
                             <small>Already registered ?</small>
-                            <a data-ui-sref="login">Login Here </a></div>
+                            <a data-ui-sref="login">Login Here </a>
+                        </div>
                     </div>
                 </div>
             </div>

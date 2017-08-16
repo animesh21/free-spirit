@@ -16,14 +16,19 @@
       '$ionicPopup',
       '$state',
       '$window',
-      function ($ionicSideMenuDelegate, $state, $http, $ionicModal, $ionicPopup, $widnow, $ionicHistory) {
+      function ($ionicSideMenuDelegate, $state, $http, $ionicModal,
+                $ionicPopup, $widnow, $ionicHistory) {
         'use strict';
-
         $ionicSideMenuDelegate.canDragContent(false);
-
         var vm = this;
 
         vm.doLogin = doLogin;
+
+        function goToSingUp() {
+          localStorage.clear();
+          console.log('clearing local storage');
+          $state.go('signup');
+        }
 
         function doLogin(form, record) {
           if (form.$valid) {
